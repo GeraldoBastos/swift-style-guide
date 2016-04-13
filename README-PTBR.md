@@ -3,7 +3,7 @@ Um guia de estilo e convenções de programação para projetos em Swift
 Esta é uma tentativa de incentivar padrões para alcançar os seguintes objetivos (mais ou menos em ordem de prioridade):
 
  1. Maior rigor e diminuição da probabilidade de erro do programador
- 1. Aumento da clareza de internação
+ 1. Aumento da clareza de intenção
  1. Verbosidade reduzida
  1. Menos debates sobre estética
 
