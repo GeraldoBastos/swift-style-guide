@@ -3,7 +3,7 @@ Um guia de estilo e convenções de programação para projetos em Swift
 Esta é uma tentativa de incentivar padrões para alcançar os seguintes objetivos (mais ou menos em ordem de prioridade):
 
  1. Maior rigor e diminuição da probabilidade de erro do programador
- 1. Aumento da clareza de internação
+ 1. Aumento da clareza de intenção
  1. Verbosidade reduzida
  1. Menos debates sobre estética
 
@@ -53,15 +53,15 @@ guard n.isNumber else {
 
 Você também pode fazer isso com uma declaração `if`, mas é preferível usar `guard` porque uma declaração `guard` sem `return`, `break` ou `continue` produz um erro de compilação. Logo, a saída é garantida.
 
-#### Evite usar Unwrapping forçado de Opcionais
+#### Evite usar _Unwrapping_ forçado de Opcionais
 
 Se você tem um identificador `foo` do tipo `FooType?` ou `FooType!`, se possível não use unwrapping forçado para chegar ao valor subjacente (`foo!`). Em vez de forçar, é preferível:
 
 ```swift
-if foo let = foo {
-    // Use o valor `foo` desembrulhado aqui
-} outro {
-    // Se necessário, tratar o caso em que o opcional é nulo
+if let foo = foo {
+    // Use o valor de `foo` unwrapped aqui
+} else {
+    // Se necessário, tratar o caso em que o opcional é nil
 }
 ```
 
@@ -72,17 +72,17 @@ Alternativamente, você pode querer usar encadeamento de opcionais em alguns des
 foo?.callSomethingIfFooIsNotNil ()
 ```
 
-_Justificativa:_ Uso explícito de `if let`-binding para opcionais resulta em código mais seguro. Unwrapping à força é mais propenso a provocar erros em tempo de execução.
+_Justificativa:_ Uso explícito de `if let`-binding para opcionais resulta em código mais seguro. _Unwrapping_ forçado é mais propenso a causar erros em tempo de execução.
 
-#### Evite usar Opcionais Unwrapped Implicitamente
+#### Evite usar Opcionais _Unwrapped_ Implicitamente
 
-Sempre que possível, use `let foo: FooType?` ao invés de `let foo:FooType!` se `foo` pode ser nil (Note-se que, em geral, `?` pode ser usado ao invés de `!`).
+Sempre que possível, use `let foo: FooType?` ao invés de `let foo:FooType!` se `foo` pode ser `nil` (Note-se que, em geral, `?` pode ser usado ao invés de `!`).
 
-_Justificativa:_ Opcionais explícitos resultam em código mais seguro. Opcionais unwrapped implicitamente têm o potencial de produzir erros em tempo de execução.
+_Justificativa:_ Opcionais explícitos resultam em código mais seguro. Opcionais _unwrapped_ implicitamente têm o potencial de produzir erros em tempo de execução.
 
-#### Prefira getters implícitos nas propriedades e subscritos somente-leitura.
+#### Prefira _getters_ implícitos nas propriedades e _subscripts_ somente leitura.
 
-Quando possível, omita a palavra-chave `get` em propriedades somente-leitura computadas automaticamente e subscritos somente-leitura.
+Quando possível, omita a palavra-chave `get` em propriedades somente-leitura computadas automaticamente e _subscripts_ somente leitura.
 
 Então, escreva assim:
 
@@ -187,9 +187,9 @@ extension History {
 
 _Justificativa:_ Isso faz com que a semântica de captura de `self` se destaque mais em closures e evita a verbosidade em outros lugares.
 
-#### Prefira estruturas a classes
+#### Prefira `struct` a `class`
 
-A menos que você necessite de funcionalidade que só pode ser fornecida por uma classe (como identidade ou des-inicializadores), dê preferência a implementar um struct.
+A menos que você necessite de funcionalidade que só pode ser fornecida por uma classe (como identidade ou des-inicializadores), dê preferência a implementar um `struct`.
 
 Note-se que a herança (por si só) normalmente _não é_ uma boa razão para usar as classes porque o polimorfismo pode ser fornecido por protocolos e reutilização de implementações pode ser fornecida através de composição.
 
