@@ -299,4 +299,4 @@ _Justificativa:_ Operadores consistem em caracteres de pontuação, o que pode t
 * [日本語 版] (https://github.com/jarinosuke/swift-style-guide/blob/master/README_JP.md)
 * [한국어판] (https://github.com/minsOne/swift-style-guide/blob/master/README_KR.md)
 * [Versión en Español] (https://github.com/antoniosejas/swift-style-guide/blob/spanish/README-ES.md)
-* [Versão em Português do Brasil](https://github.com/fernandocastor/swift-style-guide/blob/master/README-PTBR.md)
+* [Versão original em Inglês](https://github.com/github/swift-style-guide/blob/master/README.md)
